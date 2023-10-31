@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace NetAPI.Data;
+namespace NetAPI.Data.Entities;
 
 public class Account
 {
@@ -10,9 +10,10 @@ public class Account
     public string? LastName { get; set; }
     public string? Email { get; set; }
     public string? PasswordHash { get; set; }
+    public DateTime CreatedDate { get; set; }
 }
 
-public class UserConfiguration : IEntityTypeConfiguration<Account>
+public class AccountConfiguration : IEntityTypeConfiguration<Account>
 {
     public void Configure(EntityTypeBuilder<Account> builder)
     {
