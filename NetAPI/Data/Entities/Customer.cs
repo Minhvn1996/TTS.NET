@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace NetAPI.Data;
+namespace NetAPI.Data.Entities;
 
 public class Customer
 {
