@@ -1,7 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using NetAPI.Data;
 using NetAPI.Data.EF;
+using NetAPI.Extensions;
+using NetAPI.Models;
 using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +18,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
     ?? throw new InvalidOperationException("Connection string 'DaisyStudyDbContext' not found."));
 });
 
+// Declare DI
+
 builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
@@ -23,6 +29,18 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger DaisyStudy", Version = "v1" });
 });
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+
+builder.Services.AddHttpClient();
+// Add validator to the service collection
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
+
 
 var app = builder.Build();
 
@@ -35,6 +53,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseErrorWrapping();
 app.UseStaticFiles();
 
 app.UseRouting();

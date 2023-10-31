@@ -1,7 +1,7 @@
 using NetAPI.Data.EF;
 using NetAPI.Data.Entities;
 
-namespace NetAPI.Data;
+namespace NetAPI.Data.EF;
 
 public class DbInitializer
 {
@@ -27,7 +27,7 @@ public class DbInitializer
                 Id = new Guid("3375b35a-9bcc-4b49-a1ed-611a38a607d2").ToString(),
                 FirstName = "Nguyen Van",
                 LastName = "A",
-                PasswordHash = Helpers.MD5Encrypt.Encrypt("password123"),
+                PasswordHash = Helpers.MD5Encrypt.Encrypt("Password@123"),
                 Email = "nguyenvana@gmail.com",
                 CreatedDate = DateTime.Now
             };
@@ -37,7 +37,7 @@ public class DbInitializer
                 Id = new Guid("3375b35a-9bcc-4b49-a1ed-611a38a607d3").ToString(),
                 FirstName = "Le Thi",
                 LastName = "B",
-                PasswordHash = Helpers.MD5Encrypt.Encrypt("password123"),
+                PasswordHash = Helpers.MD5Encrypt.Encrypt("Password@123"),
                 Email = "lethib@gmail.com",
                 CreatedDate = DateTime.Now
             };
