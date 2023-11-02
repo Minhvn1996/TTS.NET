@@ -1,4 +1,5 @@
 using FluentValidation;
+using NetAPI.Models.Enum;
 
 namespace NetAPI.Models;
 
@@ -9,6 +10,7 @@ public class AccountViewModel
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public string? Email { get; set; }
+    public Role Role { get; set; }
     public DateTime CreatedDate { get; set; }
 }
 
@@ -61,12 +63,9 @@ public class LoginRequestValidator : AbstractValidator<LoginRequest>
 {
     public LoginRequestValidator()
     {
-        RuleFor(x => x.Password).NotEmpty().WithMessage("Password is required")
-            .MinimumLength(8).WithMessage("Password has to atleast 8 characters")
-            .Matches(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
-            .WithMessage("Password is not match complexity rules.");
-
         RuleFor(x => x.Email).NotEmpty().WithMessage("Email is required")
             .Matches(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").WithMessage("Email format is not match");
+
+        RuleFor(x => x.Password).NotEmpty().WithMessage("Password is required");
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using NetAPI.Models.Enum;
 
 namespace NetAPI.Data.Entities;
 
@@ -10,6 +11,7 @@ public class Account
     public string? LastName { get; set; }
     public string? Email { get; set; }
     public string? PasswordHash { get; set; }
+    public Role Role { get; set; }
     public DateTime CreatedDate { get; set; }
 }
 

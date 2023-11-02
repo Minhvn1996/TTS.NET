@@ -5,6 +5,7 @@ using NetAPI.Data.EF;
 using NetAPI.Data.Entities;
 using NetAPI.Helpers;
 using NetAPI.Models;
+using NetAPI.Models.Enum;
 
 namespace NetAPI.Controllers;
 
@@ -35,7 +36,8 @@ public class AccountsController : ControllerBase
             LastName = request.LastName,
             Email = request.Email,
             PasswordHash = MD5Encrypt.Encrypt(request.Password!),
-            CreatedDate = DateTime.Now
+            CreatedDate = DateTime.Now,
+            Role = Role.USER
         };
         await _context.Accounts.AddAsync(account);
         var result = await _context.SaveChangesAsync();
@@ -94,7 +96,7 @@ public class AccountsController : ControllerBase
         {
             return Ok(CreateAccountViewModel(account));
         }
-        else return BadRequest(new ApiBadRequestResponse("Password is not math"));
+        else return BadRequest(new ApiBadRequestResponse("Password is incorrect"));
     }
 
     [HttpGet("getAll")]
@@ -113,7 +115,8 @@ public class AccountsController : ControllerBase
             FirstName = account.FirstName,
             LastName = account.LastName,
             Email = account.Email,
-            CreatedDate = account.CreatedDate
+            CreatedDate = account.CreatedDate,
+            Role = account.Role
         };
     }
 }

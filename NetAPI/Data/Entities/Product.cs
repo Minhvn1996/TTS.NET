@@ -6,7 +6,6 @@ namespace NetAPI.Data.Entities;
 public class Product
 {
     public int Id { set; get; }
-
     public int CategoryId { set; get; }
     public Category? Category { set; get; }
     public string? Name { set; get; }
@@ -36,10 +35,10 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .HasMaxLength(1000);
 
         builder.Property(x => x.Price)
-            .HasPrecision(18, 2);
+            .HasPrecision(18, 0);
 
         builder.HasOne(x => x.Category)
             .WithMany(x => x.Products)
-            .HasForeignKey(x => x.CategoryId);
+            .HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Cascade);
     }
 }
