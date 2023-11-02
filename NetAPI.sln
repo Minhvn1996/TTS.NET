@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1706.6
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetAPI", "NetAPI\NetAPI.csproj", "{2A90709E-21DF-458B-8F05-D66ECDBA859C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetAPI", "NetAPI\NetAPI.csproj", "{2A90709E-21DF-458B-8F05-D66ECDBA859C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationAPI", "ApplicationAPI\ApplicationAPI.csproj", "{C0DADDFF-60C4-49B2-A8B0-755746133CB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2A90709E-21DF-458B-8F05-D66ECDBA859C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A90709E-21DF-458B-8F05-D66ECDBA859C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A90709E-21DF-458B-8F05-D66ECDBA859C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0DADDFF-60C4-49B2-A8B0-755746133CB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0DADDFF-60C4-49B2-A8B0-755746133CB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0DADDFF-60C4-49B2-A8B0-755746133CB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0DADDFF-60C4-49B2-A8B0-755746133CB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
