@@ -1,5 +1,6 @@
 using NetAPI.Data.EF;
 using NetAPI.Data.Entities;
+using NetAPI.Models.Enum;
 
 namespace NetAPI.Data.EF;
 
@@ -29,7 +30,8 @@ public class DbInitializer
                 LastName = "A",
                 PasswordHash = Helpers.MD5Encrypt.Encrypt("Password@123"),
                 Email = "nguyenvana@gmail.com",
-                CreatedDate = DateTime.Now
+                CreatedDate = DateTime.Now,
+                Role = Role.ADMINISTRATOR
             };
 
             var account2 = new Account
@@ -39,7 +41,8 @@ public class DbInitializer
                 LastName = "B",
                 PasswordHash = Helpers.MD5Encrypt.Encrypt("Password@123"),
                 Email = "lethib@gmail.com",
-                CreatedDate = DateTime.Now
+                CreatedDate = DateTime.Now,
+                Role = Role.USER
             };
             _context.Accounts.AddRange(new List<Account>() { account1, account2 });
             await _context.SaveChangesAsync();
@@ -84,32 +87,27 @@ public class DbInitializer
         {
             var category1 = new Category
             {
-                Name = "Bút",
-                Description = "Bút"
+                Name = "Bút"
             };
 
             var category2 = new Category
             {
-                Name = "Thước",
-                Description = "Thước"
+                Name = "Thước"
             };
 
             var category3 = new Category
             {
-                Name = "Vở",
-                Description = "Vở"
+                Name = "Vở"
             };
 
             var category4 = new Category
             {
-                Name = "Màu",
-                Description = "Màu"
+                Name = "Màu"
             };
 
             var category5 = new Category
             {
-                Name = "Giấy",
-                Description = "Giấy"
+                Name = "Giấy"
             };
             _context.Categories.AddRange(new List<Category>() { category1, category2, category3, category4, category5 });
             await _context.SaveChangesAsync();
